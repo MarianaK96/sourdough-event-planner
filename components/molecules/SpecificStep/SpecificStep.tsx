@@ -11,43 +11,26 @@ import {
   TextInputWrapper,
   TimeInputWrapper,
   LabelInput,
-} from "./FirstStep.styles";
-import React, { useEffect } from "react";
-import {
-  componentArrayStore,
-  addEventToState,
-  formatEvents,
-} from "data/componentStore";
+} from "./SpecificStep.styles";
+import React from "react";
 
-interface FirstStepProps {
+interface GenericStepProps {
   calendarEvent: any;
   updateEventForm: any;
   saveCurrEvent: any;
+  stepName: string;
 }
 
-const FirstStep: React.FC<FirstStepProps> = ({
-  // calendarEvent,
+const GenericStep: React.FC<GenericStepProps> = ({
+  calendarEvent,
   updateEventForm,
   saveCurrEvent,
+  stepName,
 }) => {
-  const { setCalendarEvent, calendarEvent } = addEventToState();
-  useEffect(() => {
-    console.log(" calendarEvent in first form : ", calendarEvent);
-  }, [calendarEvent]);
   return (
     <>
       <Wrapper>
         <TimeInputWrapper>
-          <Container>
-            <InputLabel
-              htmlFor="startDate"
-              text="When are you starting the recipe?"
-            />
-            <DateTimeInput
-              id="startTime"
-              onChange={(e) => updateEventForm(e)}
-            />
-          </Container>
           <Container>
             <InputLabel
               htmlFor="endTime"
@@ -59,21 +42,19 @@ const FirstStep: React.FC<FirstStepProps> = ({
 
         <TextInputWrapper>
           <LabelInput>
-            <InputLabel htmlFor="eventName" text="What will you be doing?" />
-            <TextInput id="eventName" onChange={(e) => updateEventForm(e)} />
-          </LabelInput>
-          <LabelInput>
             <InputLabel htmlFor="eventDesc" text="Add some more notes" />
             <TextInput id="eventDesc" onChange={(e) => updateEventForm(e)} />
           </LabelInput>
         </TextInputWrapper>
         <SaveButton
           text="Save 🥖 event"
-          onClick={() => saveCurrEvent(calendarEvent)}
+          onClick={() =>
+            saveCurrEvent({ eventName: stepName, ...calendarEvent })
+          }
         />
       </Wrapper>
     </>
   );
 };
 
-export default FirstStep;
+export default GenericStep;

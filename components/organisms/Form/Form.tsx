@@ -1,94 +1,43 @@
 import { FirstStep, GenericStep } from "components/molecules";
 import React, { useState, useEffect, useRef, forwardRef } from "react";
 import { createEvents } from "../../../utils/createEvent";
-import { setDuration } from "../../../utils/setDuration";
-import { saveEvent } from "../../../utils/saveEvent";
-import { events } from "../../../data/sourdoughEvents";
-import { recurringEvent } from "../../../utils/multipleSteps";
+// import { events } from "../../../data/sourdoughEvents";
+import {
+  componentArrayStore,
+  addEventToState,
+  formatEvents,
+} from "data/componentStore";
+
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = ({}) => {
-  const [calendarEvent, setCalendarEvent] = useState({
-    startDate: "00-00-0000",
-    startTime: "00:00",
-    endTime: "00:00",
-    eventName: "",
-    specifiedEventName: "",
-    eventDesc: "",
-    interval: 0,
-    recurrence: 0,
-  });
-  const [formArray, setFormArray] = useState<Element[]>();
+  const { addStep, componentArray } = componentArrayStore();
+  const { setCalendarEvent, calendarEvent } = addEventToState();
+  const { formatEvent, formatRecurringEvents, events } = formatEvents();
 
-  const updateEventForm = (e: { target: { id: any; value: any } }) => {
-    setCalendarEvent({
-      ...calendarEvent,
-      [e.target.id]: e.target.value,
-    });
-  };
-
-  const saveCurrEvent = (event: any) => {
-    events.push(saveEvent(event));
-    setCalendarEvent({
-      ...calendarEvent,
-      startTime: setDuration(event),
-      endTime: "",
-      eventName: "",
-      eventDesc: "",
-    });
-  };
-
-  const saveRecurringEvent = (event: any) => {
-    recurringEvent(event);
-    setCalendarEvent({
-      ...calendarEvent,
-      startTime: setDuration(event[event.length - 1]),
-      endTime: "",
-      eventName: "",
-      eventDesc: "",
-    });
-  };
-  const createAllEvents = async () => {
-    for (let index = 0; index < events.length; index++) {
-      const event = events[index];
-      await createEvents(event);
-    }
-  };
+  const [formArray, setFormArray] = useState<any>([
+    <FirstStep
+      updateEventForm={setCalendarEvent}
+      saveCurrEvent={formatEvent}
+      calendarEvent={calendarEvent}
+      key={0}
+    />,
+    <GenericStep
+      updateEventForm={setCalendarEvent}
+      saveCurrEvent={formatEvent}
+      calendarEvent={calendarEvent}
+      key={1}
+    />,
+  ]);
 
   useEffect(() => {
-    setFormArray(
-      <GenericStep
-        updateEventForm={updateEventForm}
-        saveCurrEvent={saveCurrEvent}
-        calendarEvent={calendarEvent}
-        setCalendarEvent={setCalendarEvent}
-        key={1}
-      />
-    );
-    // formArray.push(
-    // <GenericStep
-    //   updateEventForm={updateEventForm}
-    //   saveCurrEvent={saveCurrEvent}
-    //   calendarEvent={calendarEvent}
-    //   setCalendarEvent={setCalendarEvent}
-    //   key={1}
-    // />
+    addStep(formArray);
+    console.log("adding steps");
   }, []);
 
-  console.log(" formArray : ", formArray);
+  //adding the steps in the useeffect above, duplicates them
 
-  return (
-    <>
-      {/* <FirstStep
-        updateEventForm={updateEventForm}
-        saveCurrEvent={saveCurrEvent}
-        calendarEvent={calendarEvent}
-        setCalendarEvent={setCalendarEvent}
-        key={0}
-      /> */}
-      {formArray.map((item) => item)}
-    </>
-  );
+  return <>{componentArray.map((item: JSX.Element) => item)}</>;
 };
 
 export default Home;
