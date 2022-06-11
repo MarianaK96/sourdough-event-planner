@@ -8,15 +8,12 @@ import {
   PinkBackground,
 } from "./Authorisation.styles";
 import GoogleIcon from "public/GoogleIcon";
-import AuthorisationBackground from "components/atoms/AuthorisationBackground";
-import BaguetteBackground from "public/BaguetteBackground";
 
 interface AuthorisationProps {}
 
 const config = {
-  clientId:
-    "22523177138-96gmm07is48cqongebtd00l4cetah3sp.apps.googleusercontent.com",
-  apiKey: "AIzaSyDdtMKHh8JWzqfFHT3nDLZzCmOxNZXycTM",
+  clientId: process.env.CLIENT_ID,
+  apiKey: process.env.API_KEY,
   scope: "https://www.googleapis.com/auth/calendar",
   discoveryDocs: [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
