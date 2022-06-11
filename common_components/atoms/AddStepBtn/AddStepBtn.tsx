@@ -5,12 +5,13 @@ import { MdAdd } from "react-icons/md";
 interface AddStepBtnProps {
   text: string;
   onClick: () => void;
+  isOpen: boolean;
 }
 
-const AddStepBtn: React.FC<AddStepBtnProps> = ({ text, onClick }) => {
+const AddStepBtn: React.FC<AddStepBtnProps> = ({ text, onClick, isOpen }) => {
   return (
     <>
-      <Button onClick={onClick}>
+      <Button onClick={onClick} isOpen={isOpen}>
         <MdAdd size={25} />
         {text}
       </Button>

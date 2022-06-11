@@ -14,16 +14,14 @@ import {
 } from "./GenericStep.styles";
 import React from "react";
 
-interface FirstStepProps {
+interface GenericStepProps {
   calendarEvent: any;
-  setCalendarEvent: any;
   updateEventForm: any;
   saveCurrEvent: any;
 }
 
-const FirstStep: React.FC<FirstStepProps> = ({
+const GenericStep: React.FC<GenericStepProps> = ({
   calendarEvent,
-  setCalendarEvent,
   updateEventForm,
   saveCurrEvent,
 }) => {
@@ -64,4 +62,4 @@ const FirstStep: React.FC<FirstStepProps> = ({
   );
 };
 
-export default FirstStep;
+export default GenericStep;

@@ -7,7 +7,7 @@ const HomePage = () => {
       <HomeWrapper>
         <Home />
       </HomeWrapper>
-      {/* <Menu /> */}
+      <Menu />
     </>
   );
 };

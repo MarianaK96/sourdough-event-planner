@@ -5,21 +5,33 @@ interface Props {
 }
 
 export const Wrapper = styled.div<Props>`
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  display: flex;
   justify-content: center;
-  background-color: #f9f9f9;
+  align-items: center;
+  background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  height: 20rem;
-  position: absolute;
+  position: fixed;
   z-index: 10;
-  top: 45%;
-  height: 100%;
+  height: ${(props) => (props.isOpen ? "50%" : "0%")};
+  bottom: 0;
   width: 100%;
+  transition: height 0.4s ease-in-out;
 `;
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+  height: 80%;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    justify-content: baseline;
+  }
 `;

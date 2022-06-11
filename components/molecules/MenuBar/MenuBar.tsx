@@ -8,7 +8,6 @@ interface MenuBarProps {
 }
 
 const MenuBar: React.FC<MenuBarProps> = ({ setIsOpen, isOpen }) => {
-  console.log(" isOpen : ", isOpen);
   return (
     <>
       <Container>
