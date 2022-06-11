@@ -8,9 +8,9 @@ import {
   formatEvents,
 } from "data/componentStore";
 
-interface HomeProps {}
+interface FormProps {}
 
-const Home: React.FC<HomeProps> = ({}) => {
+const Form: React.FC<FormProps> = ({}) => {
   const { addStep, componentArray } = componentArrayStore();
   const { setCalendarEvent, calendarEvent } = addEventToState();
   const { formatEvent, formatRecurringEvents, events } = formatEvents();
@@ -32,12 +32,11 @@ const Home: React.FC<HomeProps> = ({}) => {
 
   useEffect(() => {
     addStep(formArray);
-    console.log("adding steps");
   }, []);
 
   //adding the steps in the useeffect above, duplicates them
 
-  return <>{componentArray.map((item: JSX.Element) => item)}</>;
+  return <>{componentArray.map((item: any) => item)}</>;
 };
 
-export default Home;
+export default Form;

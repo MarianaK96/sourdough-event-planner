@@ -1,8 +1,5 @@
 import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { NextScript } from "next/document";
-import Script from "next/script";
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -20,11 +17,6 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
-            <NextScript />
-            <Script
-              src="https://apis.google.com/js/platform.js?onload=onLoadCallback"
-              strategy="beforeInteractive"
-            ></Script>
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>

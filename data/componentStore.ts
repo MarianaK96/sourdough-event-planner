@@ -44,7 +44,6 @@ export const componentArrayStore = create<ComponentState>((set) => ({
   componentArray: [],
   addStep: (component) => {
     set((state) => {
-      console.log(" state : ", state);
       return {
         ...state.componentArray,
         componentArray: [...state.componentArray, component],
@@ -57,7 +56,6 @@ export const addEventToState = create<EventState>((set) => ({
   calendarEvent: initialCalendarState,
   setCalendarEvent: (e: { target: { id: any; value: any } }) => {
     set((state) => {
-      console.log(" state : ", state);
       return {
         calendarEvent: {
           ...state.calendarEvent,
