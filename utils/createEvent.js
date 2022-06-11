@@ -1,20 +1,24 @@
-// export const createEvents = async (calendarEvent) => {
-//   try {
-//     const res = await ApiCalendar.createEvent(calendarEvent);
-//     console.log(res);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+import ApiCalendar from "react-google-calendar-api";
+const apiCalendar = new ApiCalendar(process.env.config);
 
-export const createEvents = (event) => {
-  const request = gapi.client.calendar.events.insert({
-    calendarId: "primary",
-    resource: event,
-  });
-
-  request.execute((event) => {
-    console.log(event);
-    // window.open(event.htmlLink);
-  });
+export const createEvents = async (event) => {
+  try {
+    const res = await apiCalendar.createEvent(event);
+    window.open(event.htmlLink);
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
 };
+
+// export const createEvents = (event) => {
+//   const request = gapi.client.calendar.events.insert({
+//     calendarId: "primary",
+//     resource: event,
+//   });
+
+//   request.execute((event) => {
+//     console.log(event);
+//     // window.open(event.htmlLink);
+//   });
+// };

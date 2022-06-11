@@ -31,9 +31,7 @@ const RecurringSteps: React.FC<RecurringStepsProps> = ({
   saveCurrEvent,
 }) => {
   const { setCalendarEvent, calendarEvent } = addEventToState();
-  useEffect(() => {
-    console.log(" calendarEvent in recurring steps form : ", calendarEvent);
-  }, [calendarEvent]);
+  useEffect(() => {}, [calendarEvent]);
 
   const addListOfEvents = (calendarEvent: {
     startDate?: string;
@@ -45,7 +43,6 @@ const RecurringSteps: React.FC<RecurringStepsProps> = ({
     recurrence: any;
   }) => {
     const { startTime, recurrence, interval } = calendarEvent;
-    console.log("calendarEvent in list of events : ", calendarEvent);
     let times = [];
 
     for (let x = 0; x < recurrence; x++) {

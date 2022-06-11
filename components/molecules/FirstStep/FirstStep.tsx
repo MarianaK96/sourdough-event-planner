@@ -31,9 +31,7 @@ const FirstStep: React.FC<FirstStepProps> = ({
   saveCurrEvent,
 }) => {
   const { setCalendarEvent, calendarEvent } = addEventToState();
-  useEffect(() => {
-    console.log(" calendarEvent in first form : ", calendarEvent);
-  }, [calendarEvent]);
+  useEffect(() => {}, [calendarEvent]);
   return (
     <>
       <Wrapper>

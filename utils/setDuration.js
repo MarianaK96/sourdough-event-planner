@@ -2,7 +2,6 @@ import { Duration, DateTime, plus } from "luxon";
 
 export const setDuration = (time) => {
   const { startTime, endTime } = time;
-  console.log(" endTime : ", endTime);
   const checkFormat = (time) => {
     if (time.length < 7) {
       const hour = time.split(":")[0];
@@ -46,6 +45,5 @@ export const setDuration = (time) => {
   const start = new Date(checkFormat(startTime));
   // console.log(" startTime : ", startTime);
   start.setHours(start.getHours() + hours, start.getMinutes() + mins);
-  console.log("new start time : ", start.toISOString());
   return start.toISOString();
 };

@@ -4,7 +4,6 @@ import { Duration, DateTime, plus } from "luxon";
 
 export const saveEvent = (calendarEvent) => {
   const { startTime, eventName, eventDesc, recurrence, count } = calendarEvent;
-  console.log(" startTime passed into save event : ", startTime);
   //sometimes the above changes '6:30' to '6:00'
   const checkFormat = (time) => {
     if (time.length < 7) {
