@@ -4,9 +4,10 @@ import { setDuration } from "utils/setDuration";
 import { saveEvent } from "utils/saveEvent";
 import { events } from "data/sourdoughEvents";
 import { recurringEvent } from "utils/multipleSteps";
+import { ICalendarEvent, IFormattedEvent } from "interfaces";
 
 interface ComponentState {
-  componentArray: any[];
+  componentArray: (ICalendarEvent | JSX.Element)[];
   addStep: (component: JSX.Element) => void;
 }
 
@@ -34,7 +35,7 @@ interface EventState {
 }
 
 interface FormattingEvents {
-  events: any[];
+  events: (void | Element | IFormattedEvent)[];
   formatEvent: (event: any) => void;
   formatRecurringEvents: (event: any) => void;
 }
@@ -86,6 +87,7 @@ export const formatEvents = create<FormattingEvents>((set) => ({
 
   formatRecurringEvents: (event: any) => {
     set((state) => ({
+      ...events,
       events: [...state.events, recurringEvent(event)],
       calendarEvent: {
         ...initialCalendarState,
