@@ -1,12 +1,13 @@
 import { FirstStep, GenericStep } from "components/molecules";
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+import React, { useState, useEffect } from "react";
 import { createEvents } from "../../../utils/createEvent";
-// import { events } from "../../../data/sourdoughEvents";
 import {
   componentArrayStore,
   addEventToState,
   formatEvents,
 } from "data/componentStore";
+import { ButtonContainer } from "./Form.styles";
+import { AuthButtons, SaveButton } from "common_components/atoms";
 
 interface FormProps {}
 
@@ -30,13 +31,26 @@ const Form: React.FC<FormProps> = ({}) => {
     />,
   ]);
 
+  const createAllEvents = async () => {
+    for (let index = 0; index < events.length; index++) {
+      const event = events[index];
+      await createEvents(event);
+    }
+  };
+
   useEffect(() => {
     addStep(formArray);
   }, []);
 
-  //adding the steps in the useeffect above, duplicates them
-
-  return <>{componentArray.map((item: any) => item)}</>;
+  return (
+    <>
+      {/* <ButtonContainer>
+        <AuthButtons type="signOut" />
+      </ButtonContainer> */}
+      {componentArray.map((item: any) => item)}
+      <SaveButton onClick={createAllEvents} text={"Add events"} />
+    </>
+  );
 };
 
 export default Form;

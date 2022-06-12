@@ -16,6 +16,12 @@ export const Wrapper = styled.div<Props>`
   bottom: 0;
   width: 100%;
   transition: height 0.4s ease-in-out;
+
+  @media (min-width: 1024px) {
+    height: 100%;
+    width: ${(props) => (props.isOpen ? "25%" : "0%")};
+    transition: width 0.4s ease-in-out;
+  }
 `;
 
 export const Container = styled.div`

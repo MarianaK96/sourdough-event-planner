@@ -4,6 +4,7 @@ import TimeInput from "./TimeInput";
 import TextInput from "./TextInput";
 import SaveButton from "./SaveButton";
 import AddStepBtn from "./AddStepBtn";
+import AuthButtons from "./AuthButtons";
 
 export {
   DateTimeInput,
@@ -12,4 +13,5 @@ export {
   TextInput,
   SaveButton,
   AddStepBtn,
+  AuthButtons,
 };

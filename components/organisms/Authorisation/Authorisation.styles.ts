@@ -1,10 +1,59 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  align-items: center;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-top: 16rem;
+
+  @media (min-width: 760px) {
+    margin-top: 9rem;
+    padding-top: 0;
+  }
+`;
+
+export const LoginContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50%;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 10px;
   position: relative;
+
+  @media (min-width: 760px) {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 40px 5px rgb(233 233 235 / 70%);
+    width: 24rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 24rem;
+  }
+`;
+
+export const Background = styled.div`
+  position: absolute;
+  overflow: hidden;
+  opacity: 60%;
+
+  @media (min-width: 760px) {
+    display: none;
+  }
+`;
+
+export const Icon = styled.p`
+  display: none;
+  @media (min-width: 760px) {
+    display: block;
+    font-size: 3.7rem;
+    margin: 0;
+    padding-bottom: 1rem;
+  }
 `;
 
 export const PinkBackground = styled.div`
@@ -23,46 +72,4 @@ export const Title = styled.h1`
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   margin-bottom: 3rem;
-`;
-
-export const SignInButton = styled.button`
-  z-index: 10;
-  margin-top: 2rem;
-  display: flex;
-  align-items: center;
-  width: 90%;
-  border-radius: 5px;
-  height: 2.5rem;
-  text-decoration: none;
-  border: none;
-  background-color: white;
-  box-shadow: 0 2px 4px 0 rgb(208,112,160, 25%);
-  border: 1px solid rgb(208,112,160, 15%);
-  cursor: pointer;
-  font-family: "Roboto", sans-serif;
-  padding: 1.5rem;
-
-  &:hover {
-    box-shadow: rgba((208,112,160, 0.5) 0px 7px 29px 0px;
-  }
-
-  & > p {
-    margin-left: 2rem;
-  }
-`;
-
-export const SignOutButton = styled.button`
-  width: 120px;
-  border-radius: 0.5px;
-  height: 36px;
-  text-decoration: none;
-  border: none;
-  background-color: #4285f4;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%);
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: rgba(66, 133, 244, 0.2) 0px 7px 29px 0px;
-  }
 `;

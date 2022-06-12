@@ -1,9 +1,9 @@
 import { Authorisation } from "components/organisms";
 import React from "react";
 
-interface loginProps {}
+interface LoginPageProps {}
 
-const login: React.FC<loginProps> = ({}) => {
+const LoginPage: React.FC<LoginPageProps> = ({}) => {
   return (
     <>
       <Authorisation />
@@ -11,4 +11,4 @@ const login: React.FC<loginProps> = ({}) => {
   );
 };
 
-export default login;
+export default LoginPage;
